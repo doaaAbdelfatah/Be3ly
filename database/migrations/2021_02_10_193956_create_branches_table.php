@@ -16,9 +16,10 @@ class CreateBranchesTable extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("address");
-            $table->string("phone");
-            $table->string("mobile");
+            $table->string("address")->nullable();
+            $table->string("phone")->nullable();
+            $table->string("mobile")->nullable();
+            $table->enum("type" ,["both" ,"branch" ,"inventory"])->default("both");
             $table->foreignId("store_id")->constrained("stores");
             $table->timestamps();
         });
