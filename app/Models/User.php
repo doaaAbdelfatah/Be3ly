@@ -58,4 +58,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    // if user customer
+    public function selling_orders()
+    {
+        return $this->hasMany(SellingOrder::class, 'customer_id', 'id');
+    }
+
+
+    // if user employee
+    public function selling_orders_created_by()
+    {
+        return $this->hasMany(SellingOrder::class, 'created_by', 'id');
+    }
+
 }

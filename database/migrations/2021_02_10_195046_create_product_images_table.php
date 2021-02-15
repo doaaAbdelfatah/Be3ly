@@ -17,7 +17,7 @@ class CreateProductImagesTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("url");
-            $table->foreignId("product_id")->constrained("produtcs");
+            $table->foreignId("product_id")->constrained("products");
             $table->timestamps();
         });
     }

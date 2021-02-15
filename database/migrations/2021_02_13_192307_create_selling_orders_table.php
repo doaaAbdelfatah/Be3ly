@@ -26,6 +26,7 @@ class CreateSellingOrdersTable extends Migration
             $table->decimal("shipping_fees")->nullable();
             $table->foreignId("shipping_company_id")->nullable()->constrained("shipping_companies");
             $table->foreignId("location_id")->nullable()->constrained("locations");
+            $table->foreignId("branch_id")->constrained("branches");
             $table->timestamps();
 
         });

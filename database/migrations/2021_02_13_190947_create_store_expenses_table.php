@@ -17,6 +17,7 @@ class CreateStoreExpensesTable extends Migration
             $table->id();
             $table->foreignId("expense_id")->constrained("expenses");
             $table->foreignId("branch_id")->nullable()->constrained("branches");
+            $table->foreignId("store_id")->nullable()->constrained("stores");
             $table->string("url")->nullable();
             $table->decimal("amount");
             $table->string("comment" ,2000)->nullable();
