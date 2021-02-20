@@ -12,9 +12,9 @@ class Branch extends Model
     protected $table = 'branches';
     protected $guarded = [];
 
-    // function store(){
-    //     return $this->belongsTo(Store::class , "store_id" ,"id");
-    // }
+    function store(){
+        return $this->belongsTo(Store::class , "store_id" ,"id");
+    }
 
     public function getInfoAttribute($value)
     {
@@ -30,4 +30,10 @@ class Branch extends Model
     {
         return $this->belongsToMany(Expense::class,  StoreExpense::class ,"branch_id" , "expense_id");
     }
+
+    function doaa (){
+        echo "test";
+    }
+
+
 }
