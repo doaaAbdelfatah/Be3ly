@@ -13,6 +13,7 @@ class Branch extends Model
     protected $guarded = [];
 
     function store(){
+        // echo test;
         return $this->belongsTo(Store::class , "store_id" ,"id");
     }
 
