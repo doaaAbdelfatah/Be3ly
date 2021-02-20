@@ -11,9 +11,12 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 lg:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('store.index') }}" :active="request()->routeIs('store.index')">
+                        {{__('messages.Store')}}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -141,6 +144,10 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('store.index') }}" :active="request()->routeIs('store.index')">
+                {{__('messages.Store')}}
+            </x-jet-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

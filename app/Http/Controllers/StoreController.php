@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
@@ -14,7 +15,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        return view("stores.index");
     }
 
     /**
@@ -35,7 +36,23 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+            "name"=>"required",
+            "logo"=>"nullable|image"
+       ]);
+       $logoName =null;
+        if ($request->logo)
+        $logoName = Storage::disk("public")->put("/stores", $request->logo);
+
+        Store::create([
+            "name" =>$request->name,
+            "logo" =>$logoName ,
+        ]);
+
+        return redirect()->route("store.index");
+
+
+
     }
 
     /**
