@@ -9,7 +9,7 @@ class Property extends Model
 {
     use HasFactory;
 
-    public function productProperty()
+    public function product_properties()
     {
         return $this->hasMany(ProductProperty::class, 'property_id', 'id');
     }

@@ -18,6 +18,10 @@ class SellingOrder extends Model
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
+    public function selling_order_details()
+    {
+     return $this->hasMany(SellingOrderDetail::class, 'selling_order_id', 'id');
+    }
 
 
 }

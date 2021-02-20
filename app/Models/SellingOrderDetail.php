@@ -18,4 +18,8 @@ class SellingOrderDetail extends Model
     {
         return $this->belongsTo(Unit::class, 'unit_id', 'id');
     }
+    public function selling_order()
+    {
+        return $this->belongsTo(SellingOrder::class, 'selling_order_id', 'id');
+    }
 }
