@@ -12,10 +12,9 @@ class Branch extends Model
     protected $table = 'branches';
     protected $guarded = [];
 
-    function store(){
-        // echo test;
-        return $this->belongsTo(Store::class , "store_id" ,"id");
-    }
+    // function store(){
+    //     return $this->belongsTo(Store::class , "store_id" ,"id");
+    // }
 
     public function getInfoAttribute($value)
     {
