@@ -31,4 +31,10 @@ class Branch extends Model
     {
         return $this->belongsToMany(Expense::class,  StoreExpense::class ,"branch_id" , "expense_id");
     }
+
+    public function new_function()
+    {
+        return $this->belongsToMany(Expense::class,  StoreExpense::class ,"branch_id" , "expense_id");
+    }
+
 }
