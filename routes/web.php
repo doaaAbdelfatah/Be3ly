@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\StoreController;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
 Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/store', [StoreController::class , "index"])->name("store.index");
     Route::post('/store', [StoreController::class , "store"])->name("store.store");
+
+
+    Route::prefix("/branch")->group(function(){
+        Route::get('/', [BranchController::class , "index"])->name("branch.index");
+
+    });
 });

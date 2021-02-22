@@ -3,8 +3,8 @@
 return [
 
     "Store"=>"Store",
-    ""=>"",
-    ""=>"",
+    "Branches"=>"Branches",
+    "Enter Branch Information"=>"Enter Branch Information",
     ""=>"",
     ""=>"",
     ""=>"",

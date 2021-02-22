@@ -1,0 +1,7 @@
+bona :location - categories - products
+moustafa : shipping_companies - shipping_company_prices
+islam : properties -product_properties
+hassan - ahmed :expenses ,units ,suppliers
+
+
+

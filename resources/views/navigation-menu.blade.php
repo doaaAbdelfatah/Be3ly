@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('store.index') }}" :active="request()->routeIs('store.index')">
                         {{__('messages.Store')}}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('branch.index') }}" :active="request()->routeIs('branch.index')">
+                        {{__('messages.Branches')}}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -146,6 +149,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('store.index') }}" :active="request()->routeIs('store.index')">
                 {{__('messages.Store')}}
+            </x-jet-responsive-nav-link>
+             <x-jet-responsive-nav-link href="{{ route('branch.index') }}" :active="request()->routeIs('branch.index')">
+                {{__('messages.Branches')}}
             </x-jet-responsive-nav-link>
 
         </div>
