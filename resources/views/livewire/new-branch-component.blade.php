@@ -50,39 +50,122 @@
                     <button type="button" wire:click='save' class="w-full px-3 py-1 text-white bg-blue-800 rounded-md focus:bg-blue-600 focus:outline-none">Save</button>
                 </div>
                </div>
+               {{-- the new table --}}
                <div class="w-2/3">
-                    <div class="mx-5 p-2">
-                        <h1>All Branches</h1>
-                        <div class="w-full flex flex-wrap">
-                            @forelse (  $data as $branch)
-                                <div class="w-1/3 m-2 p-4 rounded-lg bg-white border-4 border-blue-800">
-                                    <div class="flex items-center">
-                                        <div class="flex flex-col justify-center">
-                                            <div class="text-lg">{{$branch->name}}</div>
-                                            <div class="text-sm text-gray-400">{{$branch->store->name}}</div>
-                                            <div class="text-sm text-gray-400">{{$branch->address}}</div>
-                                            <div class="text-sm text-gray-400">{{$branch->mobile}}</div>
-                                            <div class="text-sm text-gray-400">{{$branch->phone}}</div>
-                                            <div class="flex">
-                                            <a class="text-red-600 w-5 cursor-pointer " wire:click="delete({{$branch->id}})" >
-                                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
-                                             </a>
-                                             <a class="text-green-600 w-5 cursor-pointer " wire:click="edit({{$branch->id}})" >
-                                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="edit" class="svg-inline--fa fa-edit fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg>
-                                             </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
+               <div>
+                <div class="flex flex-col max-w-full shadow-md m-6">
+              <!-- Header -->
+              <div class="items-center bg-gray-50 border-b px-6 py-4 text-center">
+                <p class="text-xl text-gray-800 font-semibold ">All Branches</p>
+              </div>
+              <!-- End Header -->
 
-                            @endforelse
-                            {{ $data->links()}}
+              <!-- Tools -->
+              <div class="flex flex-wrap justify-between items-center bg-white border-b p-2 space-y-2 md:space-y-0">
+                <div class="space-x-1 mb-1 sm:mb-0">
+                  <button class="border border-gray-300 shadow-sm rounded-md p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                  <button class="border border-gray-300 shadow-sm rounded-md p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="flex flex-wrap justify-start md:justify-end items-center space-x-0 space-y-2 sm:space-x-2 sm:space-y-0">
+                  <div class="divide-x-2 border border-gray-300 shadow-sm rounded-md">
+                    <button class="p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                      </svg>
+                    </button>
+
+                    <button class="p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                      </svg>
+                    </button>
+
+                    <button class="p-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div class="relative">
+                    <input type="text" placeholder="Search by" class="appearance-none relative block w-full px-8 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 text-xs" />
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="absolute left-3 bottom-2 h-4 w-4 text-gray-500">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+
+                  <button class="flex items-center space-x-1 text-xs text-gray-500 font-semibold border border-gray-300 shadow-sm rounded-md p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-500">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                    <span>Filter</span>
+                  </button>
+                </div>
+              </div>
+              <!-- End Tools -->
+
+              <!-- Table -->
+              <div class="flex flex-wrap justify-between items-center bg-white border-b p-2 space-y-2 md:space-y-0">
+                <table class="overflow-x-auto w-full bg-white divide-y divide-gray-200">
+                    <thead class="bg-gray-50 text-gray-500 text-sm">
+                    <tr class="divide-x divide-gray-300">
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Id</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Adress</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Phone</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Mobile</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Store</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-gray-500 text-xs divide-y divide-gray-200">
+                        @forelse (  $data as $branch)
+                    <tr class="text-center">
+                        <td class="py-3">{{$branch->id}}</td>
+                        <td class="py-3">{{$branch->name}}</td>
+                        <td class="py-3">{{$branch->address}}</td>
+                        <td class="py-3">{{$branch->phone}}</td>
+                        <td class="py-3">{{$branch->mobile}}</td>
+                        <td class="py-3">
+                            <span class="bg-indigo-200 text-indigo-500 text-xs font-semibold rounded-md py-1 px-2">{{$branch->type}}</span>
+                            </td>
+                        <td class="py-3">{{$branch->store->name}}</td>
+                        <td class="py-3">
+                        <div class="flex justify-center space-x-1">
+                            <button class="border-2 border-indigo-200 rounded-md p-1" wire:click="edit({{$branch->id}})" >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-indigo-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                            </button>
+                            <button class="border-2 border-red-200 rounded-md p-1" wire:click="delete({{$branch->id}})">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-red-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                            </button>
                         </div>
-                    </div>
-               </div>
+                        </td>
+                    </tr>
+                    @empty
 
+                    @endforelse
+                </tbody>
+                </table>
+              <!-- End Table -->
+            </div>
 
+            </div>
+            </div>
             </div>
         </div>
 </div>
