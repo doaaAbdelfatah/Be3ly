@@ -14,7 +14,7 @@ class ProductPropertyController extends Controller
      */
     public function index()
     {
-        //
+        return view("productproparty.index");
     }
 
     /**

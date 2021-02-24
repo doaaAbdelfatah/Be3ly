@@ -4,6 +4,8 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ShippingCompanyController;
 use App\Http\Controllers\ShippingCompanyPriceController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\ProductPropertyController;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +39,13 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
         Route::get('/', [ShippingCompanyController::class , "index"])->name("shipping.index");
         Route::get('/prices', [ShippingCompanyPriceController::class , "index"])->name("shippingprices.index");
 
+    });
+
+    Route::prefix("/property")->group(function(){
+        Route::get('/', [PropertyController::class , "index"])->name("property.index");
+    });
+
+    Route::prefix("/product")->group(function(){
+        Route::get('/property', [ProductPropertyController::class , "index"])->name("productproperty.index");
     });
 });

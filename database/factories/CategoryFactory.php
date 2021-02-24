@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name"=>$this->faker->name(),
+            "category_id"=>Category::inRandomOrder()->first()->id,
         ];
     }
 }
