@@ -119,13 +119,13 @@
                 <table class="overflow-x-auto w-full bg-white divide-y divide-gray-200">
                     <thead class="bg-gray-50 text-gray-500 text-sm">
                     <tr class="divide-x divide-gray-300">
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Id</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Adress</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Phone</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Mobile</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Store</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Id</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Name</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Adress</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Phone</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Mobile</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Type</th>
+                        <th class="px-3 py-2 text-left text-xs text-center font-medium text-gray-500 uppercase">Store</th>
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase"></th>
                     </tr>
                     </thead>
@@ -133,13 +133,39 @@
                         @forelse (  $data as $branch)
                     <tr class="text-center">
                         <td class="py-3">{{$branch->id}}</td>
-                        <td class="py-3">{{$branch->name}}</td>
+                        <td class="py-3 text-red-400">{{$branch->name}}</td>
+
+                        @if ($branch->address)
                         <td class="py-3">{{$branch->address}}</td>
+                        @else
+                        <td class="py-3">null</td>
+                        @endif
+                        @if ($branch->phone)
                         <td class="py-3">{{$branch->phone}}</td>
+                        @else
+                        <td class="py-3">null</td>
+                        @endif
+                        @if ($branch->mobile)
                         <td class="py-3">{{$branch->mobile}}</td>
+                        @else
+                        <td class="py-3">null</td>
+                        @endif
+
+
+                        @if ($branch->type == "both")
                         <td class="py-3">
-                            <span class="bg-indigo-200 text-indigo-500 text-xs font-semibold rounded-md py-1 px-2">{{$branch->type}}</span>
-                            </td>
+                          <span class="bg-indigo-200 text-indigo-500 text-xs font-semibold rounded-md py-1 px-2">{{$branch->type}}</span>
+                        </td>
+
+                        @elseif($branch->type == "branch")
+                        <td class="py-3">
+                          <span class="bg-green-200 text-green-500 text-xs font-semibold rounded-md py-1 px-2">{{$branch->type}}</span>
+                        </td>
+                        @else
+                        <td class="py-3">
+                          <span class="bg-red-200 text-red-500 text-xs font-semibold rounded-md py-1 px-2">{{$branch->type}}</span>
+                        </td>
+                        @endif
                         <td class="py-3">{{$branch->store->name}}</td>
                         <td class="py-3">
                         <div class="flex justify-center space-x-1">

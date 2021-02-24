@@ -14,7 +14,7 @@ class ShippingCompanyPriceController extends Controller
      */
     public function index()
     {
-        //
+        return view("shipping.prices");
     }
 
     /**

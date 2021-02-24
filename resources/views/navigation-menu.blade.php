@@ -21,6 +21,12 @@
                     <x-jet-nav-link href="{{ route('branch.index') }}" :active="request()->routeIs('branch.index')">
                         {{__('messages.Branches')}}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('shipping.index') }}" :active="request()->routeIs('shipping.index')">
+                        {{__('messages.Shiping')}}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('shippingprices.index') }}" :active="request()->routeIs('shippingprices.index')">
+                        {{__('messages.ShipingPrices')}}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -152,6 +158,12 @@
             </x-jet-responsive-nav-link>
              <x-jet-responsive-nav-link href="{{ route('branch.index') }}" :active="request()->routeIs('branch.index')">
                 {{__('messages.Branches')}}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('shipping.index') }}" :active="request()->routeIs('shipping.index')">
+                {{__('messages.Shipping')}}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('shippingprices.index') }}" :active="request()->routeIs('shippingprices.index')">
+                {{__('messages.ShipingPrices')}}
             </x-jet-responsive-nav-link>
 
         </div>

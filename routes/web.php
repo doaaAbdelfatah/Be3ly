@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\ShippingCompanyController;
+use App\Http\Controllers\ShippingCompanyPriceController;
 use App\Http\Controllers\StoreController;
+use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +30,12 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
 
     Route::prefix("/branch")->group(function(){
         Route::get('/', [BranchController::class , "index"])->name("branch.index");
+
+    });
+
+    Route::prefix("/shipping")->group(function(){
+        Route::get('/', [ShippingCompanyController::class , "index"])->name("shipping.index");
+        Route::get('/prices', [ShippingCompanyPriceController::class , "index"])->name("shippingprices.index");
 
     });
 });
