@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\ProductProperty;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ProductPropertyController extends Controller
      */
     public function index()
     {
-        return view("productproparty.index");
+        return view("productproparty.index" ,["product" =>null]);
     }
 
     /**
@@ -44,9 +45,10 @@ class ProductPropertyController extends Controller
      * @param  \App\Models\ProductProperty  $productProperty
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductProperty $productProperty)
+    public function show(Product $product)
     {
-        //
+
+        return view("productproparty.index" ,["product" =>$product]);
     }
 
     /**

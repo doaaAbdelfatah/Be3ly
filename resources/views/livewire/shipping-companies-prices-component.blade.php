@@ -11,21 +11,20 @@
                                         {{-- 1st Shipping Companies Name  --}}
                                         <label for="name" class="block text-black">Shipping Company</label>
                                         <label class="block mt-4">
-                                            <select wire:model="name" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
+                                            <select wire:model="shipping_company_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                                 <option value="">Select Shipping Company</option>
                                                 @forelse ( \App\Models\ShippingCompany::all() as $ship)
-
                                                     <option value="{{$ship->id}}">{{$ship->name}}</option>
                                                 @empty
                                                     <option value="">Empty</option>
                                                 @endforelse
                                             </select>
                                           </label>
-                                        @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        @error('shipping_company_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                     </div>
                                     {{-- 2st Shipping Companies Locations  --}}
                                     <label for="name" class="block text-black">Shipping Company Location</label>
-                                    <select wire:model="location" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
+                                    <select wire:model="location_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                         <option value="">Select Locations</option>
                                         @forelse ( \App\Models\Location::all() as $location)
 
@@ -34,7 +33,7 @@
                                             <option value="">Empty</option>
                                         @endforelse
                                     </select>
-                                    @error('location') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                    @error('location_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
 
                                     {{-- 3st Shipping Companies Amount  --}}
                                     <div class="my-2 text-sm">
@@ -84,7 +83,7 @@
                                                             </div>
                                                             <div class="ml-4">
                                                             <div class="text-sm font-medium text-red-600 text-gray-900">
-                                                                 {{$shipping_price->shipping_company_id}}
+                                                                 {{$shipping_price->shipping_company->name}}
                                                             </div>
                                                             <div class="text-sm text-gray-500">
                                                                 {{$shipping_price->location->name}}

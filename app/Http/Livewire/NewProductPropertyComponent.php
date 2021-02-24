@@ -2,19 +2,28 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\ProductProperty;
 use Livewire\Component;
 
 class NewProductPropertyComponent extends Component
 {
+    public $product;
+
+
     public $product_id ;
     public $property_id;
     public $value;
-    
+
     protected $rules = [
         'product_id' => 'required',
         'property_id' => 'required',
         'value' => 'nullable|min:2',
     ];
+
+    function mount(){
+        if($this->product) $this->product_id =$this->product->id;
+    }
+
     public function render()
     {
         return view('livewire.new-product-property-component');
@@ -38,5 +47,5 @@ class NewProductPropertyComponent extends Component
 }
 
 
-    
+
 }

@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         return [
             "name"=>$this->faker->name(),
-            "category_id"=>Category::inRandomOrder()->first()->id,
+          //  "category_id"=>Category::inRandomOrder()->first()->id,
         ];
     }
 }

@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingCompanyController;
 use App\Http\Controllers\ShippingCompanyPriceController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ProductPropertyController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UnitController;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -40,12 +44,28 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
         Route::get('/prices', [ShippingCompanyPriceController::class , "index"])->name("shippingprices.index");
 
     });
-
     Route::prefix("/property")->group(function(){
         Route::get('/', [PropertyController::class , "index"])->name("property.index");
     });
 
     Route::prefix("/product")->group(function(){
+        Route::get('/', [ProductController::class , "index"])->name("product.index");
         Route::get('/property', [ProductPropertyController::class , "index"])->name("productproperty.index");
+        Route::get('/property/{product}', [ProductPropertyController::class , "show"])->name("productproperty.show");
+    });
+
+    Route::prefix("/expenses")->group(function(){
+        Route::get('/', [ExpenseController::class , "index"])->name("expenses.index");
+
+   });
+
+   Route::prefix("/units")->group(function(){
+    Route::get('/', [UnitController::class , "index"])->name("units.index");
+
+    });
+
+    Route::prefix("/suppliers")->group(function(){
+        Route::get('/', [SupplierController::class , "index"])->name("suppliers.index");
+
     });
 });

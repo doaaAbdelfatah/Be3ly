@@ -8,9 +8,9 @@
                                 <h1 class="font-medium text-2xl mt-2 text-center">Product Property</h1>
                                 <form action="" class="mt-6">
                                     <div class="my-2 text-sm">
-                                        <label for="name" class="block text-black">Product</label>
+                                        <label for="product_id" class="block text-black">Product</label>
                                         <label class="block mt-4">
-                                            <select wire:model="name" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
+                                            <select wire:model="product_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                                 <option value="">Select Product</option>
                                                 @forelse ( \App\Models\Product::all() as $productproperty)
 
@@ -20,14 +20,14 @@
                                                 @endforelse
                                             </select>
                                           </label>
-                                        @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        @error('product_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                     </div>
 
 
                                     <div class="my-2 text-sm">
-                                        <label for="name" class="block text-black">Property</label>
+                                        <label for="property_id" class="block text-black">Property</label>
                                         <label class="block mt-4">
-                                            <select wire:model="name" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
+                                            <select wire:model="property_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                                 <option value="">Select Property</option>
                                                 @forelse ( \App\Models\Property::all() as $productproperty)
 
@@ -37,17 +37,17 @@
                                                 @endforelse
                                             </select>
                                           </label>
-                                        @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        @error('property_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                     </div>
 
 
                                     <div class="my-5 text-sm">
-                                        <label for="username" class="block text-black">Value</label>
+                                        <label for="value" class="block text-black">Value</label>
                                         <input type="text" wire:model="value" autofocus class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="value" />
-                                        @error('name') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        @error('value') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                     </div>
 
-    
+
                                     <button type="button" wire:click="save" class="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-green-500 w-full">Add</button>
                                 </form>
                             </div>
@@ -73,20 +73,21 @@
                                                         Value
                                                     </th>
                                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-    
                                                     </th>
-    
                                                 </tr>
                                                 </thead>
                                                 <tbody class="bg-white divide-y divide-gray-200">
                                                     @forelse (\App\Models\ProductProperty::all() as $productproperty)
                                                     <tr class=" cursor-pointer hover:bg-gray-200">
                                                         <td class="px-6 py-4 whitespace-nowrap ">
-                                                                {{$productproperty->id}}
-                                                        </td> 
+                                                                {{$productproperty->product->name}}
+                                                        </td>
                                                         <td class="px-6 py-4 whitespace-nowrap ">
-                                                            {{$productproperty->name}}
-                                                    </td> 
+                                                            {{$productproperty->property->name}}
+                                                    </td>
+                                                     <td class="px-6 py-4 whitespace-nowrap ">
+                                                            {{$productproperty->value}}
+                                                    </td>
                                                         <td class="p-1 whitespace-nowrap text-right text-sm font-medium">
                                                             <a type="button" title="Edit({{$productproperty->name}})" wire:click="edit({{$productproperty->id}})" class="cursor-pointer text-sm bg-green-500 hover:bg-green-700 text-white p-1 rounded focus:outline-none focus:shadow-outline">Edit</a>
                                                             <a type="button" title="Delete({{$productproperty->name}})" wire:click="delete({{$productproperty->id}})" class="cursor-pointer text-sm bg-red-500 hover:bg-red-700 text-white p-1 rounded focus:outline-none focus:shadow-outline">Delete</a>
@@ -94,10 +95,10 @@
                                                         </td>
                                                     </tr>
                                                     @empty
-    
+
                                                     @endforelse
-    
-    
+
+
                                                 <!-- More items... -->
                                                 </tbody>
                                             </table>
@@ -105,7 +106,7 @@
                                         </div>
                                         </div>
                                     </div>
-    
+
                         </div>
                     </div>
             </div>

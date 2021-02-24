@@ -9,14 +9,14 @@ use Livewire\Component;
 class ShippingCompaniesPricesComponent extends Component
 {
 
-    public $name ;
-    public $location ;
+    public $shipping_company_id ;
+    public $location_id ;
     public $amount ;
     public $shipping_price_id ;
 
     protected $rules = [
-        'name' => 'required',
-        'location' => 'required',
+        'shipping_company_id' => 'required',
+        'location_id' => 'required',
         'amount' => 'required|min:2',
     ];
 
@@ -44,10 +44,11 @@ class ShippingCompaniesPricesComponent extends Component
         } else {
             $shipping_price = new ShippingCompanyPrice();
         }
-        $shipping_price->shipping_company_id = $this->name;
-        $shipping_price->location_id = $this->location;
+        $shipping_price->shipping_company_id = $this->shipping_company_id;
+        $shipping_price->location_id = $this->location_id;
         $shipping_price->amount = $this->amount;
         $shipping_price->save();
+        $this->clear();
     }
     //Delte item function of Shipping Companies
 
@@ -55,13 +56,20 @@ class ShippingCompaniesPricesComponent extends Component
         ShippingCompanyPrice::destroy($shipping_price_id);
     }
 
+
+    function clear(){
+        $this->shipping_price_id = null;
+        $this->shipping_company_id = null;
+        $this->location_id = null;
+        $this->amount = null;
+    }
     //Edit Item function of Shipping Companies
 
     function edit($shipping_price_id){
         $shipping_price =ShippingCompanyPrice::find($shipping_price_id);
         $this->shipping_price_id = $shipping_price->id;
-        $this->name = $shipping_price->name;
-        $this->location = $shipping_price->location;
+        $this->shipping_company_id = $shipping_price->shipping_company_id;
+        $this->location_id = $shipping_price->location_id;
         $this->amount = $shipping_price->amount;
     }
 }

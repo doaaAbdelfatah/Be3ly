@@ -11,21 +11,104 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 lg:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('store.index') }}" :active="request()->routeIs('store.index')">
-                        {{__('messages.Store')}}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('branch.index') }}" :active="request()->routeIs('branch.index')">
-                        {{__('messages.Branches')}}
-                    </x-jet-nav-link>
+                <div class="space-x-8 sm:-my-px sm:ml-10 flex">
+                    <div class="ml-3 mt-5 relative">
+                        <x-jet-dropdown align="left" width="100">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                      Dashboard
+                                    </button>
+                                </span>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <div class="w-60">
+                                    <x-jet-dropdown-link href="/dashboard">
+                                        {{ __('messages.Home') }}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('messages.Store') }}
+                                    </div>
+
+                                    <x-jet-dropdown-link href="/dashboard/store">
+                                        {{ __('messages.Store') }}
+                                    </x-jet-dropdown-link>
+                                     <x-jet-dropdown-link href="/dashboard/branch">
+                                        {{__('messages.Branches')}}
+                                    </x-jet-dropdown-link>
+
+
+                                    <div class="border-t border-gray-100"></div>
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('messages.Products') }}
+                                    </div>
+                                    <x-jet-dropdown-link href="/dashboard/product">
+                                        {{__('messages.Products')}}
+                                    </x-jet-dropdown-link>
+
+
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
+                    <div class="ml-3 mt-5 relative">
+                        <x-jet-dropdown align="left" width="100">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                      Dashboard
+                                    </button>
+                                </span>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <div class="w-60">
+                                    <x-jet-dropdown-link href="/dashboard">
+                                        {{ __('messages.Home') }}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('messages.Store') }}
+                                    </div>
+
+                                    <x-jet-dropdown-link href="/dashboard/store">
+                                        {{ __('messages.Store') }}
+                                    </x-jet-dropdown-link>
+                                     <x-jet-dropdown-link href="/dashboard/branch">
+                                        {{__('messages.Branches')}}
+                                    </x-jet-dropdown-link>
+
+
+                                    <div class="border-t border-gray-100"></div>
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('messages.Products') }}
+                                    </div>
+                                    <x-jet-dropdown-link href="/dashboard/product">
+                                        {{__('messages.Products')}}
+                                    </x-jet-dropdown-link>
+
+
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
+
                     <x-jet-nav-link href="{{ route('shipping.index') }}" :active="request()->routeIs('shipping.index')">
                         {{__('messages.Shiping')}}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('shippingprices.index') }}" :active="request()->routeIs('shippingprices.index')">
                         {{__('messages.ShipingPrices')}}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('expenses.index') }}" :active="request()->routeIs('expenses.index')">
+                        {{__('messages.expenses')}}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('units.index') }}" :active="request()->routeIs('units.index')">
+                        {{__('messages.units')}}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('suppliers.index') }}" :active="request()->routeIs('suppliers.index')">
+                        {{__('messages.suppliers')}}
                     </x-jet-nav-link>
                 </div>
             </div>

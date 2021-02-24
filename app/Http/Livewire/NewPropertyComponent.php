@@ -9,6 +9,7 @@ class NewPropertyComponent extends Component
 {
 
     public $name ;
+    public $property_id;
 
     protected $rules = [
         'name' => 'required|min:3',
@@ -28,8 +29,12 @@ class NewPropertyComponent extends Component
     public function save(){
 
         $this->validate();
+        if ($this->property_id){
+            $property =Property::find($this->property_id);
 
-        $property = new Property();
+        }else{
+            $property = new Property();
+        }
         $property->name = $this->name;
         $property->save();
 }
