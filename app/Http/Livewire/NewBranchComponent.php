@@ -69,4 +69,13 @@ class NewBranchComponent extends Component
         $this->type = $branch->type;
         $this->store_id = $branch->store_id;
     }
+    function clear(){
+        $this->branch_id = null;
+        $this->name = null;
+        $this->phone = null;
+        $this->address = null;
+        $this->mobile = null;
+        $this->type = null;
+        $this->store_id = null;
+    }
 }

@@ -38,6 +38,7 @@ class AddUnitComponent extends Component
         $unit->name = $this->name;
 
         $unit->save();
+        $this->clear();
 
 
     }
@@ -49,6 +50,11 @@ class AddUnitComponent extends Component
         $unit =Unit::find($unit_id);
         $this->unit_id = $unit->id;
         $this->name = $unit->name;
+
+    }
+    function clear(){
+        $this->unit_id = null;
+        $this->name = null;
 
     }
 }

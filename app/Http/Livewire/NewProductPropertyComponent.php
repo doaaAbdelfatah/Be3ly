@@ -47,5 +47,4 @@ class NewProductPropertyComponent extends Component
 }
 
 
-
 }

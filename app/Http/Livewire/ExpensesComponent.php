@@ -37,6 +37,7 @@ class ExpensesComponent extends Component
         $expense->name = $this->name;
 
         $expense->save();
+        $this->clear();
 
 
     }
@@ -49,5 +50,9 @@ class ExpensesComponent extends Component
         $this->expense_id = $expense->id;
         $this->name = $expense->name;
 
+    }
+    function clear(){
+        $this->expense_id = null;
+        $this->name = null;
     }
 }

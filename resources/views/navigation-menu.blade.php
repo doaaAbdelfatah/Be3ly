@@ -110,6 +110,12 @@
 
                                     <div class="border-t border-gray-100"></div>
 
+                                    <x-jet-dropdown-link href="{{ route('productproperty.index') }}">
+                                        {{__('messages.ProductProperty')}}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="border-t border-gray-100"></div>
+
 
                                 </div>
                             </x-slot>
