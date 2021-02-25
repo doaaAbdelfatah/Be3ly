@@ -9,6 +9,7 @@ class AddUnitComponent extends Component
 {
 
     public $name;
+    public $unit_id;
 
     protected $rules = [
        'name' => 'required',
@@ -27,7 +28,12 @@ class AddUnitComponent extends Component
     public function save(){
         $this->validate();
 
- $unit = new Unit();
+
+    if($this->unit_id)
+        $unit = Unit::find($this->unit_id);
+    else {
+        $unit = new Unit();
+    }
 
         $unit->name = $this->name;
 

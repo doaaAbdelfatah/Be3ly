@@ -44,16 +44,25 @@
                 </form>
             </div>
          </div>
-         <div class="md:w-2/3 w-full  h-screen bg-gray-300 ">
-            <div class="mx-3 my-6 px-6 py-10 bg-white rounded-lg flex flex-wrap">
-                @foreach (\App\Models\Store::all() as $store)
-                    <div class="h-32 w-32 p-2 m-4 bg-red-300 text-center" >
-                        @if ($store->logo)
-                        <img class="w-full" src={{asset('/storage/' .$store->logo)}} alt="{{$store->name}}">
-                        @endif
-                        {{$store->name}}
+         <div class="md:w-2/3 w-full h-screen">
+            <main class="grid place-items-center min-h-screen bg-gradient-to-t from-blue-200 to-indigo-900 p-5">
+                <div>
+                  <h1 class="text-xl sm:text-xl md:text-3xl text-center font-bold text-gray-200 mb-5">Branches Info</h1>
+                  <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- CARD 1 -->
+                    @foreach (\App\Models\Store::all() as $store)
+                    <div class="bg-gray-900 shadow-lg rounded p-3 cursor-pointer hover:bg-gray-500" >
+                      <div class="group relative">
+                        <div class="h-100 w-100 p-2 m-4" >
+                            @if ($store->logo)
+                            <img class="w-full" src={{asset('/storage/' .$store->logo)}} alt="{{$store->name}}">
+                            @endif
+                        </div>
+                      </div>
+                      <div class="p-2">
+                        <h3 class="text-white text-lg text-center">{{$store->name}}</h3>
+                      </div>
                     </div>
-                @endforeach
-            </div>
-        </div>
+                    @endforeach
+                </div>
 </x-app-layout>

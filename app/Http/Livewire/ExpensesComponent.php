@@ -9,6 +9,7 @@ use Livewire\Component;
 class ExpensesComponent extends Component
 {
      public $name;
+     public $expense_id;
 
      protected $rules = [
         'name' => 'required',
@@ -27,8 +28,11 @@ class ExpensesComponent extends Component
 
     public function save(){
         $this->validate();
-
- $expense = new Expense();
+        if($this->expense_id){
+            $expense = Expense::find($this->expense_id);
+        }else{
+            $expense = new Expense();
+        }
 
         $expense->name = $this->name;
 
