@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingCompanyController;
 use App\Http\Controllers\ShippingCompanyPriceController;
@@ -12,6 +14,7 @@ use App\Http\Controllers\PurchasingOrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Models\PurchasingOrder;
+use App\Models\Location;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -72,5 +75,14 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
     });
     Route::prefix("/purchasing/order")->group(function(){
         Route::get('/customer', [PurchasingOrderController::class , "index"])->name("purchasingorder.index");
+    });
+    Route::prefix("/category")->group(function(){
+        Route::get('/', [CategoryController::class , "index"])->name("category.index");
+
+    });
+
+    Route::prefix("/location")->group(function(){
+        Route::get('/', [LocationController::class , "index"])->name("location.index");
+
     });
 });
