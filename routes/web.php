@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingCompanyController;
 use App\Http\Controllers\ShippingCompanyPriceController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ProductPropertyController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use App\Models\Location;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +69,16 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
 
     Route::prefix("/suppliers")->group(function(){
         Route::get('/', [SupplierController::class , "index"])->name("suppliers.index");
+
+    });
+
+    Route::prefix("/category")->group(function(){
+        Route::get('/', [CategoryController::class , "index"])->name("category.index");
+
+    });
+
+    Route::prefix("/location")->group(function(){
+        Route::get('/', [LocationController::class , "index"])->name("location.index");
 
     });
 });
