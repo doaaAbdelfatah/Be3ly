@@ -14,7 +14,14 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         @livewireStyles
-
+        <script type="text/javascript">
+            function toggleModal(modalID){
+              document.getElementById(modalID).classList.toggle("hidden");
+              document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+              document.getElementById(modalID).classList.toggle("flex");
+              document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+            }
+          </script>
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>

@@ -14,7 +14,7 @@ return [
     "suppliers"=>"suppliers",
     "Home"=>"Home",
     "Products"=>"Products",
-    ""=>"",
+    "PurchasingOrder"=>"Purchasing Order",
     ""=>"",
     ""=>"",
     ""=>"",

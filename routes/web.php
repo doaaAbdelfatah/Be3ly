@@ -8,8 +8,10 @@ use App\Http\Controllers\ShippingCompanyPriceController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ProductPropertyController;
+use App\Http\Controllers\PurchasingOrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use App\Models\PurchasingOrder;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use Illuminate\Support\Facades\Route;
@@ -67,5 +69,8 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
     Route::prefix("/suppliers")->group(function(){
         Route::get('/', [SupplierController::class , "index"])->name("suppliers.index");
 
+    });
+    Route::prefix("/purchasing/order")->group(function(){
+        Route::get('/customer', [PurchasingOrderController::class , "index"])->name("purchasingorder.index");
     });
 });

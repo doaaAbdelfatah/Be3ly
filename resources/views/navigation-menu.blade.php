@@ -121,6 +121,30 @@
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
+                    {{-- purchasing Order nav  --}}
+                    <div class="ml-3 mt-5 relative">
+                        <x-jet-dropdown align="left" width="100">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                        {{__('messages.PurchasingOrder')}}
+                                    </button>
+                                </span>
+                            </x-slot>
+                            <x-slot name="content">
+                                <div class="w-60 pt-1">
+                                    <x-jet-dropdown-link href="{{ route('purchasingorder.index') }}">
+                                        {{__('messages.PurchasingOrder')}}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="border-t border-gray-100"></div>
+
+
+
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
                     {{-- -> Navbar place Here <- --}}
                 </div>
             </div>

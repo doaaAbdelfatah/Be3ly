@@ -19,7 +19,7 @@ class ShippingCompaniesComponent extends Component
     protected $rules = [
         'name' => 'required|min:2',
         'phone' => 'nullable|min:9',
-        'address' => 'nullable',
+        'address' => 'nulllable',
         'mobile' => 'nullable|min:7',
     ];
     public function render()
@@ -49,6 +49,8 @@ class ShippingCompaniesComponent extends Component
         $shipping->address = $this->address;
         $shipping->mobile = $this->mobile;
         $shipping->save();
+
+        $this->clear();
     }
     //Delte item function of Shipping Companies
 
@@ -65,6 +67,14 @@ class ShippingCompaniesComponent extends Component
         $this->phone = $shipping->phone;
         $this->address = $shipping->address;
         $this->mobile = $shipping->mobile;
+    }
+
+    function clear(){
+        $this->shipping_id = null;
+        $this->name = null;
+        $this->phone = null;
+        $this->address = null;
+        $this->mobile = null;
     }
 
 }

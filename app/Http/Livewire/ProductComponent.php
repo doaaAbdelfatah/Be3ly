@@ -43,6 +43,7 @@ class ProductComponent extends Component
         $product->description = $this->description;
         $product->category_id = $this->category_id;
         $product->save();
+        $this->clear();
 
     }
 

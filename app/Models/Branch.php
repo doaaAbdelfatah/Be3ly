@@ -25,6 +25,15 @@ class Branch extends Model
     {
         return $this->hasMany(StoreExpense::class, 'branch_id', 'id');
     }
+    public function users()
+    {
+        return $this->hasMany(User::class, 'branch_id', 'id');
+    }
+    
+    public function purchasing_orders()
+    {
+        return $this->hasMany(PurchasingOrder::class );
+    }
 
     public function expenses()
     {
