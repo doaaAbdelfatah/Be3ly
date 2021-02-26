@@ -139,6 +139,16 @@
 
                                     <div class="border-t border-gray-100"></div>
 
+                                    <x-jet-dropdown-link href="{{ route('category.index') }}">
+                                        {{__('messages.Category')}}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="border-t border-gray-100"></div>
+
+                                    <x-jet-dropdown-link href="{{ route('location.index') }}">
+                                        {{__('messages.Location')}}
+                                    </x-jet-dropdown-link>
+
 
 
                                 </div>
