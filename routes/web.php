@@ -11,6 +11,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ProductPropertyController;
 use App\Http\Controllers\PurchasingOrderController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StoreExpenseController;
@@ -41,7 +42,6 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
     Route::get('/store', [StoreController::class , "index"])->name("store.index");
     Route::get('/expense', [StoreExpenseController::class , "index"])->name("storeexpense.index");
     Route::get('/expense/{store}', [StoreExpenseController::class , "show"])->name("storeexpense.show");
-
 
     Route::prefix("/branch")->group(function(){
         Route::get('/', [BranchController::class , "index"])->name("branch.index");
@@ -87,6 +87,11 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
 
     Route::prefix("/location")->group(function(){
         Route::get('/', [LocationController::class , "index"])->name("location.index");
+
+    });
+    Route::prefix("/stocks")->group(function () {
+        Route::get('/', [StockController::class, "index"])->name("stocks.index");
+        // Route::get('/', [StockController::class, "show"])->name("stocks.show");
 
     });
 });

@@ -13,7 +13,7 @@
                 <!-- Navigation Links -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 flex">
                     <div class="ml-3 mt-5 relative">
-                        <x-jet-dropdown align="left" width="100">
+                        <x-jet-dropdown align="left" >
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -21,9 +21,8 @@
                                     </button>
                                 </span>
                             </x-slot>
-
                             <x-slot name="content">
-                                <div class="w-60">
+                                <div >
                                     <x-jet-dropdown-link href="/dashboard">
                                         {{ __('messages.Home') }}
                                     </x-jet-dropdown-link>
@@ -45,19 +44,13 @@
                                      <x-jet-dropdown-link href="/dashboard/branch">
                                         {{__('messages.Branches')}}
                                     </x-jet-dropdown-link>
-
-
                                     <div class="border-t border-gray-100"></div>
-
-
-
-
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
                     <div class="ml-3 mt-5 relative">
-                        <x-jet-dropdown align="left" width="100">
+                        <x-jet-dropdown align="left">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -66,7 +59,7 @@
                                 </span>
                             </x-slot>
                             <x-slot name="content">
-                                <div class="w-60 pt-1">
+                                <div class="pt-1">
                                     <x-jet-dropdown-link href="{{ route('shipping.index') }}">
                                         {{__('messages.Shiping')}}
                                     </x-jet-dropdown-link>
@@ -89,13 +82,12 @@
                                         {{__('messages.Products')}}
                                     </x-jet-dropdown-link>
 
-
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
                     <div class="ml-3 mt-5 relative">
-                        <x-jet-dropdown align="left" width="100">
+                        <x-jet-dropdown align="left">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -104,7 +96,7 @@
                                 </span>
                             </x-slot>
                             <x-slot name="content">
-                                <div class="w-60 pt-1">
+                                <div class="pt-1">
                                     <x-jet-dropdown-link href="{{ route('units.index') }}">
                                         {{__('messages.units')}}
                                     </x-jet-dropdown-link>
@@ -120,17 +112,33 @@
                                     <x-jet-dropdown-link href="{{ route('productproperty.index') }}">
                                         {{__('messages.ProductProperty')}}
                                     </x-jet-dropdown-link>
-
                                     <div class="border-t border-gray-100"></div>
-
-
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
+                    <div class="ml-3 mt-5 relative">
+                        <x-jet-dropdown align="left">
+                            <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                      Dashboard 4
+                                    </button>
+                                </span>
+                            </x-slot>
+                            <x-slot name="content">
+                                <div class="pt-1">
+                                    <x-jet-dropdown-link href="/dashboard/stocks">
+                                        {{__('messages.Stocks')}}
+                                    </x-jet-dropdown-link>
+                                    <div class="border-t border-gray-100"></div>
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
                     {{-- purchasing Order nav  --}}
                     <div class="ml-3 mt-5 relative">
-                        <x-jet-dropdown align="left" width="100">
+                        <x-jet-dropdown align="left">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
@@ -139,7 +147,7 @@
                                 </span>
                             </x-slot>
                             <x-slot name="content">
-                                <div class="w-60 pt-1">
+                                <div class="pt-1">
                                     <x-jet-dropdown-link href="{{ route('purchasingorder.index') }}">
                                         {{__('messages.PurchasingOrder')}}
                                     </x-jet-dropdown-link>
@@ -155,9 +163,6 @@
                                     <x-jet-dropdown-link href="{{ route('location.index') }}">
                                         {{__('messages.Location')}}
                                     </x-jet-dropdown-link>
-
-
-
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>

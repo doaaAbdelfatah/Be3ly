@@ -19,7 +19,7 @@ return [
     "Location"=>"Location",
     "stores"=>"stores",
     "storeexpense"=>"store expense",
-    ""=>"",
+    "Stocks"=>"Stocks",
     ""=>"",
     ""=>"",
     ""=>"",

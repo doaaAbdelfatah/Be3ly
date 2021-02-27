@@ -32,14 +32,12 @@ class StoreExpenseComponent extends Component
     }
 
     public function save(){
-
-        $this->validate();
-
-        $storeexpense = new StoreExpense();
-        $storeexpense->store_id = $this->store_id;
-        $storeexpense->expense_id = $this->expense_id;
-        $storeexpense->save();
-}
+            $this->validate();
+            $storeexpense = new StoreExpense();
+            $storeexpense->store_id = $this->store_id;
+            $storeexpense->expense_id = $this->expense_id;
+            $storeexpense->save();
+    }
 
 
 }

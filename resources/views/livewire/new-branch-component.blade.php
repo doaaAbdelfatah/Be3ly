@@ -1,8 +1,8 @@
 <div>
  <div class="flex items-center  bg-white dark:bg-gray-900">
     <div class="container mx-auto">
-           <div class="mx-7 flex flex-col lg:flex-row">
-               <div class="w-1/3">
+           <div class="mx-7 flex flex-col md:flex-row">
+               <div class="w-full md:w-1/3">
                 <div class="mb-2">
                     <label  class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Name</label>
                     <input type="text" wire:model="name"  placeholder="Branch Name" class="w-full px-3 py-1 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
@@ -51,7 +51,7 @@
                 </div>
                </div>
                {{-- the new table --}}
-               <div class="w-2/3">
+            <div class="w-full md:w-2/3">
                <div>
                 <div class="flex flex-col max-w-full shadow-md m-6">
               <!-- Header -->
