@@ -14,7 +14,7 @@ class StoreExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return view("storeexpense.index" ,["store" =>null]);
     }
 
     /**
@@ -46,7 +46,8 @@ class StoreExpenseController extends Controller
      */
     public function show(StoreExpense $storeExpense)
     {
-        //
+        return view("storeexpense.index" ,["store" =>$store]);
+
     }
 
     /**

@@ -35,6 +35,13 @@
 
                                     <div class="border-t border-gray-100"></div>
 
+                                    <x-jet-dropdown-link href="{{ route('storeexpense.index') }}">
+                                        {{__('messages.storeexpense')}}
+                                    </x-jet-dropdown-link>
+
+
+                                    <div class="border-t border-gray-100"></div>
+
                                      <x-jet-dropdown-link href="/dashboard/branch">
                                         {{__('messages.Branches')}}
                                     </x-jet-dropdown-link>

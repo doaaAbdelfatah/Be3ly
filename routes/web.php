@@ -13,10 +13,13 @@ use App\Http\Controllers\ProductPropertyController;
 use App\Http\Controllers\PurchasingOrderController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\StoreExpenseController;
+
 use App\Models\PurchasingOrder;
 use App\Models\Location;
 use App\Models\ShippingCompany;
 use App\Models\Store;
+use App\Models\StoreExpense;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,7 +39,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
 
 Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/store', [StoreController::class , "index"])->name("store.index");
-    Route::post('/store', [StoreController::class , "store"])->name("store.store");
+    Route::get('/expense', [StoreExpenseController::class , "index"])->name("storeexpense.index");
+    Route::get('/expense/{store}', [StoreExpenseController::class , "show"])->name("storeexpense.show");
 
 
     Route::prefix("/branch")->group(function(){

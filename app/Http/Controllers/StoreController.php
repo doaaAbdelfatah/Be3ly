@@ -35,25 +35,11 @@ class StoreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-       $request->validate([
-            "name"=>"required",
-            "logo"=>"nullable|image"
-       ]);
-       $logoName =null;
-        if ($request->logo)
-        $logoName = Storage::disk("public")->put("/stores", $request->logo);
-
-        Store::create([
-            "name" =>$request->name,
-            "logo" =>$logoName ,
-        ]);
-
-        return redirect()->route("store.index");
+ {
+     
+ }
 
 
-
-    }
 
     /**
      * Display the specified resource.
