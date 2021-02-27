@@ -17,11 +17,11 @@ class PurchasingOrder extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id', 'id');
     }
-    public function user()
+    public function created_by_user()
     {
         return $this->belongsTo(User::class, "created_by" , "id");
     }
-    public function user_update()
+    public function update_by_user()
     {
         return $this->belongsTo(User::class, "updated_by" , "id");
     }

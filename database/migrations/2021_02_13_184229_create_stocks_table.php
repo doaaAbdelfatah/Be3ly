@@ -23,7 +23,6 @@ class CreateStocksTable extends Migration
             $table->decimal("avg_price")->nullable();
             $table->timestamps();
         });
-
     }
 
     /**

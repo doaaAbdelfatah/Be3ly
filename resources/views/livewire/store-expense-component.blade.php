@@ -1,5 +1,4 @@
 <div>
-
     <div>
         <div>
             <div class="flex items-center">
@@ -8,9 +7,9 @@
                             <div class="w-1/3 bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-1 shadow-md">
                                 <div class="py-8 px-8 rounded-xl">
                                     <h1 class="font-medium text-2xl mt-2 text-center">store expenses</h1>
-                                    <form action="" class="mt-6">
+                                    <form action="" class="mt-6" >
                                         <div class="my-2 text-sm">
-                                            <label for="store_id" class="block text-black">store</label>
+                                            <label for="store_id" class="block text-black">{{__('messages.Store')}}</label>
                                             <label class="block mt-4">
                                                 <select wire:model="store_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                                     <option value="">Select store</option>
@@ -24,16 +23,30 @@
                                               </label>
                                             @error('store_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                         </div>
+                                        <div class="my-2 text-sm">
+                                            <label for="store_id" class="block text-black">{{__('messages.Branch')}}</label>
+                                            <label class="block mt-4">
+                                                <select wire:model="branch_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
+                                                    <option value="">Select Branch</option>
+                                                    @forelse ( \App\Models\Branch::all() as $branch)
+                                                    <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                                    @empty
+                                                        <option value="">Empty</option>
+                                                    @endforelse
+                                                </select>
+                                              </label>
+                                            @error('branch_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        </div>
 
 
                                         <div class="my-2 text-sm">
-                                            <label  class="block text-black">expenses</label>
+                                            <label  class="block text-black">{{__('messages.Expense')}}</label>
                                             <label class="block mt-4">
                                                 <select wire:model="expense_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                                     <option value="">Select expenses</option>
-                                                    @forelse ( \App\Models\Expense::all() as $storeexpense)
+                                                    @forelse ( \App\Models\Expense::all() as $expense)
 
-                                                        <option value="{{$storeexpense->id}}">{{$storeexpense->name}}</option>
+                                                        <option value="{{$expense->id}}">{{$expense->name}}</option>
                                                     @empty
                                                         <option value="">Empty</option>
                                                     @endforelse
@@ -41,9 +54,24 @@
                                               </label>
                                             @error('expense_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                         </div>
+                                        <div class="my-2 text-sm">
+                                            <label  class="block text-black">{{__('messages.Amount')}}</label>
+                                            <input type="number" wire:model="amount" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="{{__('messages.Amount')}}" />
+                                            @error('amount') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        </div>
+                                        <div class="my-2 text-sm">
+                                            <label  class="block text-black">{{__('messages.Invoice')}}</label>
+                                            <input type="file" wire:model="url" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="{{__('messages.Invoice')}}" />
+                                            @error('url') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        </div>
 
+                                        <div class="my-2 text-sm">
+                                            <label  class="block text-black">{{__('messages.Comment')}}</label>
+                                            <textarea wire:model="comment" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
 
-
+                                            </textarea>
+                                            @error('comment') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                                        </div>
 
                                         <button type="button" wire:click="save" class="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-green-500 w-full">Add</button>
                                     </form>

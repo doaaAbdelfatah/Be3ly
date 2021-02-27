@@ -16,13 +16,9 @@ class PurchasingOrderComponent extends Component
     public $branch_id ;
     public $purchasing_id ;
 
+    // public $order ;
     protected $rules = [
         'supplier_id' => 'required',
-        'created_by' => 'required',
-        'total_invoice' => 'nullable',
-        'status' => 'nullable',
-        'updated_by' => 'required',
-        'received_at' => 'nullable',
         'branch_id' => 'required',
     ];
 
@@ -48,15 +44,17 @@ class PurchasingOrderComponent extends Component
             $purchasing = new PurchasingOrder();
         }
         $purchasing->supplier_id = $this->supplier_id ;
-        $purchasing->created_by = $this->created_by ;
-        $purchasing->total_invoice = $this->total_invoice ;
-        $purchasing->status = $this->status ;
-        $purchasing->updated_by = $this->updated_by ;
-        $purchasing->received_at = $this->received_at ;
+
+        // $purchasing->total_invoice = $this->total_invoice ;
+        // $purchasing->status = $this->status ;
+        $purchasing->created_by = auth()->user()->id ;
+        // $purchasing->received_at = $this->received_at ;
         $purchasing->branch_id = $this->branch_id ;
         $purchasing->save();
+        // $this->order = $purchasing;
+       // $this->clear();
 
-        $this->clear();
+       return redirect()->route("purchasingorder.show" ,[ "purchasingOrder"=>$purchasing->id]);
 
     }
     //Delte item function of Shipping Companies

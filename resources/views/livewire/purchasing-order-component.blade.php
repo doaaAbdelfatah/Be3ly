@@ -3,7 +3,7 @@
         <div class="flex items-center">
             <div class="container mt-2">
                    <div class="mx-1 flex flex-col lg:flex-row">
-                        <div class="w-1/3 bg-white lg:w-4/12 md:6/12 w-10/12 my-1 shadow-md">
+                        <div class="md:w-1/3 bg-white w-full my-1 shadow-md">
                             <div class="py-8 px-8 rounded-xl">
                                 <h1 class="font-sm text-xl mt-2 text-center">Make New Order</h1>
                                 <form action="" class="mt-6">
@@ -22,22 +22,16 @@
                                           </label>
                                         @error('supplier_id') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                                     </div>
-                                    {{-- 2st Created By  --}}
-                                    <label for="created_by" class="block text-black">Created By</label>
-                                    <select wire:model="created_by" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
-                                            <option value=""> Select Your Acount </option>
-                                            <option value="{{auth()->user()->id}}">{{auth()->user()->name}}</option>
-                                    </select>
-                                    @error('created_by') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
 
-                                    {{-- 3st Total invoice  --}}
+                                    {{-- 3st Total invoice
                                     <div class="my-2 text-sm">
                                         <label for="total_invoice" class="block text-black">Total invoice</label>
                                         <input type="number" wire:model="total_invoice" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Total Invoice" />
                                         @error('total_invoice') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-                                    </div>
+                                    </div> --}}
+
                                     {{-- 3st Status  --}}
-                                    <div class="my-2 text-sm">
+                                    {{-- <div class="my-2 text-sm">
                                         <label for="status" class="block text-black"> Status</label>
                                         <select wire:model="status" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                             <option value="">Select Status</option>
@@ -48,25 +42,25 @@
                                         </select>
                                         <input type="text" disabled wire:model="status"  class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Status" />
                                         @error('status') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-                                    </div>
+                                    </div> --}}
                                     {{-- 3st Updated By  --}}
-                                    <div class="my-2 text-sm">
+                                    {{-- <div class="my-2 text-sm">
                                         <label for="updated_by" class="block text-black">Updated By</label>
                                         <select  wire:model="updated_by" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                             <option value="">Select Your Account</option>
                                             <option value="{{auth()->user()->id}}">{{auth()->user()->name}}</option>
                                         </select>
                                         @error('updated_by') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-                                    </div>
+                                    </div> --}}
                                     {{-- 3st Received At  --}}
-                                    <div class="my-2 text-sm">
+                                    {{-- <div class="my-2 text-sm">
                                         <label for="received_at" class="block text-black">Received At</label>
                                         <input type="time"  wire:model="received_at" class="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full" placeholder="Received At" />
                                         @error('received_at') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
-                                    </div>
+                                    </div> --}}
                                     {{-- 3st Branch Id  --}}
                                     <div class="my-2 text-sm">
-                                        <label for="receivbranch_ided_at" class="block text-black">Branch Id At</label>
+                                        <label class="block text-black">Branch </label>
                                         <select wire:model="branch_id" class="form-select mt-1 block w-full rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full">
                                             <option value="">Select Branch</option>
                                             @forelse (\App\Models\Branch::all() as $branch)
@@ -82,7 +76,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="w-2/3 bg-red flex flex-">
+
+                        {{-- <div class="w-2/3 bg-red flex flex-">
                             <!-- This example requires Tailwind CSS v2.0+ -->
                                     <div class="flex flex-col m-2 p-2">
                                         <div class="-my-2 sm:-mx-6 lg:-mx-8">
@@ -137,7 +132,7 @@
                                                                 {{$order->id}}
                                                             </div>
                                                             <div class="text-sm text-gray-500">
-                                                                {{-- under id  --}}
+
                                                             </div>
                                                             </div>
                                                         </div>
@@ -209,10 +204,10 @@
                                                         @endif
 
                                                         <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                            {{-- {{$ship->mobile}} --}}
+
                                                         </td>
                                                         <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                            {{-- {{$ship->mobile}} --}}
+
                                                         </td>
                                                         <td class="p-2 whitespace-nowrap text-right text-sm font-medium">
                                                             <a type="button" title="Edit {{$order->id}} " wire:click="edit({{$order->id}})" class="cursor-pointer text-sm bg-green-500 hover:bg-green-700 text-white p-1 rounded focus:outline-none focus:shadow-outline">Edit</a>
@@ -267,7 +262,7 @@
                                         </div>
                                     </div>
 
-                        </div>
+                        </div> --}}
                     </div>
             </div>
         </div>

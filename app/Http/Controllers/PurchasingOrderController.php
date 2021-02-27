@@ -24,7 +24,6 @@ class PurchasingOrderController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -46,7 +45,9 @@ class PurchasingOrderController extends Controller
      */
     public function show(PurchasingOrder $purchasingOrder)
     {
-        //
+
+        return view("purchasing.show" ,["purchasingOrder"=>$purchasingOrder]);
+
     }
 
     /**

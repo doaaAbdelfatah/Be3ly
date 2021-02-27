@@ -77,8 +77,13 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
         Route::get('/', [SupplierController::class , "index"])->name("suppliers.index");
 
     });
-    Route::prefix("/purchasing/order")->group(function(){
-        Route::get('/customer', [PurchasingOrderController::class , "index"])->name("purchasingorder.index");
+    Route::prefix("/purchasing")->group(function(){
+        Route::prefix("/order")->group(function(){
+            Route::get('/', [PurchasingOrderController::class , "index"])->name("purchasingorder.index");
+            Route::get('/{purchasingOrder}', [PurchasingOrderController::class , "show"])->name("purchasingorder.show");
+
+        });
+
     });
     Route::prefix("/category")->group(function(){
         Route::get('/', [CategoryController::class , "index"])->name("category.index");

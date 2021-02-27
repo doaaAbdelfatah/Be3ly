@@ -21,10 +21,10 @@ class CreateStoreExpensesTable extends Migration
             $table->string("url")->nullable();
             $table->decimal("amount");
             $table->string("comment" ,2000)->nullable();
+            $table->foreignId("updated_by")->nullable()->constrained("users");
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
