@@ -15,12 +15,19 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StoreExpenseController;
-
+use App\Http\Resources\CategoryResourceCollection;
+use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductResourceCollection;
+use App\Http\Resources\UserResourceCollection;
+use App\Models\Category;
 use App\Models\PurchasingOrder;
 use App\Models\Location;
+use App\Models\Product;
 use App\Models\ShippingCompany;
 use App\Models\Store;
 use App\Models\StoreExpense;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -100,3 +107,48 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
 
     });
 });
+
+
+Route::get("/test" ,function (){
+
+    return Product::all()->toArray();
+});
+
+
+Route::get("/test/{id}" ,function ($id){
+    $product = Product::findOrFail($id);
+    $pr = new ProductResource( $product);
+    return  $pr;
+});
+
+Route::get("/all" ,function (){
+    $products = Product::all();
+   return  new ProductResourceCollection( $products);
+
+});
+
+Route::get("/users" ,function (){
+    $users = User::all();
+   return  new UserResourceCollection( $users);
+
+});
+Route::get("/cats" ,function (){
+    $cats = Category::all();
+    $obj = new CategoryResourceCollection( $cats);
+    return   $obj->additional(['info' =>[
+        "owner" =>"nh copyrights",
+        'version'=>"0.0.0.1"
+    ]]);
+
+});
+Route::get("/cats2" ,function (){
+    $cats = Category::all();
+    $obj = new CategoryResourceCollection( $cats);
+    return   $obj;
+
+});
+
+
+// Route::resource('category',CategoryController::class);
+
+
