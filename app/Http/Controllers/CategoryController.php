@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         //return "hello";
-       //return view('category.index');
+    //  return view('category.index');
      // return Category::all()->toJson();
       return new CategoryResourceCollection(Category::all());
     }

@@ -23,8 +23,8 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            "name"=>$this->faker->name(),
-            "price"=>$this->faker->randomDigit(),
+            "name"=>$this->faker->company(),
+            "price"=>$this->faker->numberBetween(100,5000),
             "description"=>$this->faker->paragraph(),
             "category_id"=>Category::inRandomOrder()->first()->id,
         ];

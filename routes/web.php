@@ -15,6 +15,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StoreExpenseController;
+use App\Http\Controllers\WelcomeMailController;
 use App\Http\Resources\CategoryResourceCollection;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductResourceCollection;
@@ -109,44 +110,46 @@ Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(fun
 });
 
 
-Route::get("/test" ,function (){
+Route::get('/send', [WelcomeMailController::class ,"send"]);
 
-    return Product::all()->toArray();
-});
+// Route::get("/test" ,function (){
+
+//     return Product::all()->toArray();
+// });
 
 
-Route::get("/test/{id}" ,function ($id){
-    $product = Product::findOrFail($id);
-    $pr = new ProductResource( $product);
-    return  $pr;
-});
+// Route::get("/test/{id}" ,function ($id){
+//     $product = Product::findOrFail($id);
+//     $pr = new ProductResource( $product);
+//     return  $pr;
+// });
 
-Route::get("/all" ,function (){
-    $products = Product::all();
-   return  new ProductResourceCollection( $products);
+// Route::get("/all" ,function (){
+//     $products = Product::all();
+//    return  new ProductResourceCollection( $products);
 
-});
+// });
 
-Route::get("/users" ,function (){
-    $users = User::all();
-   return  new UserResourceCollection( $users);
+// Route::get("/users" ,function (){
+//     $users = User::all();
+//    return  new UserResourceCollection( $users);
 
-});
-Route::get("/cats" ,function (){
-    $cats = Category::all();
-    $obj = new CategoryResourceCollection( $cats);
-    return   $obj->additional(['info' =>[
-        "owner" =>"nh copyrights",
-        'version'=>"0.0.0.1"
-    ]]);
+// });
+// Route::get("/cats" ,function (){
+//     $cats = Category::all();
+//     $obj = new CategoryResourceCollection( $cats);
+//     return   $obj->additional(['info' =>[
+//         "owner" =>"nh copyrights",
+//         'version'=>"0.0.0.1"
+//     ]]);
 
-});
-Route::get("/cats2" ,function (){
-    $cats = Category::all();
-    $obj = new CategoryResourceCollection( $cats);
-    return   $obj;
+// });
+// Route::get("/cats2" ,function (){
+//     $cats = Category::all();
+//     $obj = new CategoryResourceCollection( $cats);
+//     return   $obj;
 
-});
+// });
 
 
 // Route::resource('category',CategoryController::class);

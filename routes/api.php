@@ -30,4 +30,5 @@ Route::get('test/{id}', function ($id) {
 });
 
 Route::apiResource('category', CategoryController::class);
+// Route::apiResource('category', CategoryController::class);
 
