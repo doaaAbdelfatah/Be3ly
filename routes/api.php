@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Product;
@@ -31,4 +32,9 @@ Route::get('test/{id}', function ($id) {
 
 Route::apiResource('category', CategoryController::class);
 // Route::apiResource('category', CategoryController::class);
+
+
+Route::post("login" ,[UserController::class ,"login"]);
+
+Route::middleware('auth:sanctum')->get('/user/products', [UserController::class ,"get_products"]);
 

@@ -76,4 +76,9 @@ class User extends Authenticatable
         return $this->hasMany(SellingOrder::class, 'created_by', 'id');
     }
 
+    public function purchasing_orders_created_by()
+    {
+        return $this->hasMany(PurchasingOrder::class, 'created_by', 'id');
+    }
+
 }
