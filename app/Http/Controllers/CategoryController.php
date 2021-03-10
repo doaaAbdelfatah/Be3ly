@@ -17,9 +17,9 @@ class CategoryController extends Controller
     public function index()
     {
         //return "hello";
-    //  return view('category.index');
-     // return Category::all()->toJson();
-      return new CategoryResourceCollection(Category::all());
+      return view('category.index');
+      // return Category::all()->toJson();
+     // return new CategoryResourceCollection(Category::all());
     }
 
     /**
@@ -75,7 +75,7 @@ class CategoryController extends Controller
     {
         // $validator = Validator::make($request->all(), [
         //     "name" =>"required|min:2"
-        // ]);
+    // ]);
 
         // if ($validator->fails()) {
         //     return ["errors" =>$validator->errors()];

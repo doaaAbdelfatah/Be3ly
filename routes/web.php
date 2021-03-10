@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\LocationController;
@@ -11,11 +12,13 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ProductPropertyController;
 use App\Http\Controllers\PurchasingOrderController;
+use App\Http\Controllers\SellingOrderController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StoreExpenseController;
 use App\Http\Controllers\WelcomeMailController;
+use App\Http\Middleware\CheckRole;
 use App\Http\Resources\CategoryResourceCollection;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductResourceCollection;
@@ -36,17 +39,34 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
+//     return view('dashboard');
+// })->name('test');
+
+Route::prefix("/home")->middleware([])->group(function(){
+    Route::get('/', function () {
+        return view('home');
+    })->name('dashboard');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/test', function () {
-    return view('dashboard');
-})->name('test');
+    Route::get('/cart/{product}/add',[CartController::class ,"add"]);
+    Route::get('/cart/{product}/remove',[CartController::class ,"remove"]);
+    Route::get('/cart',[CartController::class ,"index"]);
 
+    Route::get('/order',[SellingOrderController::class ,"index"])->middleware(['auth:sanctum', 'verified']);
+    Route::get('/report',[CartController::class ,"report"])->middleware(['auth:sanctum', 'verified']);
 
-Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified'])->group(function(){
+});
+
+Route::get('/dashboard', function () {
+
+    if (auth()->user()->role=="customer") return redirect("/home");
+    else    return view('dashboard');
+
+})->name('dashboard')->middleware(['auth:sanctum', 'verified' ]);
+
+Route::prefix("/dashboard")->middleware(['auth:sanctum', 'verified' ,'check_role'])->group(function(){
+
     Route::get('/store', [StoreController::class , "index"])->name("store.index");
     Route::get('/expense', [StoreExpenseController::class , "index"])->name("storeexpense.index");
     Route::get('/expense/{store}', [StoreExpenseController::class , "show"])->name("storeexpense.show");

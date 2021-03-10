@@ -22,7 +22,6 @@ class UserController extends Controller
            return ['token' => $token->plainTextToken];
     }
 
-
     function get_products(Request $request){
 
         return auth()->user()->purchasing_orders_created_by;
